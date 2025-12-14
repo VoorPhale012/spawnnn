@@ -38,7 +38,7 @@ local vu14 = 60
 local vu15 = workspace.FindPartOnRayWithIgnoreList
 local vu16 = vu13.WorldToViewportPoint
 local vu17 = {
-    DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/DefaultConfig.lua"))(),
+   --DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/DefaultConfig.lua"))(),
     Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
 }
 local vu18 = {
@@ -270,7 +270,7 @@ function vu20.runEntity(pu41)
                         Volume = 1
                     }):Play()
                     local v82 = {
-                        DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/DefaultConfig.lua"))(),
+                        --DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/DefaultConfig.lua"))(),
                         Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
                     }
                     local v83 = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game
