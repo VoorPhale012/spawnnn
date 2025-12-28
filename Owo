@@ -1,0 +1,114 @@
+---====== Load spawner ======---
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/VoorPhale012/Fogroom/refs/heads/main/Furry"))()
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "Furry owo :3",
+		Asset = "https://github.com/TheendisnearDonotfear/Others/blob/main/rush.rbxm?raw=true",
+		HeightOffset = 0.2
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 5
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 500,
+		Delay = 7,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush",
+		Min = 5,
+		Max = 5,
+		Delay = 0.2
+	},
+	Damage = {
+		Enabled = true,
+		Range = 45,
+		Amount = 100
+	},
+	Crucifixion = {
+		Enabled = false,
+		Range = 85,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+local SelfModules = {
+    Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
+}
+game.Workspace["Furry owo :3"].RushNew.Attachment.ParticleEmitter.Texture = LoadCustomAsset("https://github.com/TheendisnearDonotfear/Others/blob/main/mauzymice.png?raw=true")
+game.Workspace["Furry owo :3"].RushNew.PlaySound.SoundId = "rbxassetid://4702564143"
+game.Workspace["Furry owo :3"].RushNew.PlaySound.PlaybackSpeed = 1
+game.Workspace["Furry owo :3"].RushNew.PlaySound.Volume = 2
+game.Workspace["Furry owo :3"].RushNew.Footsteps.SoundId = "rbxassetid://4702564143"
+game.Workspace["Furry owo :3"].RushNew.Footsteps.PlaybackSpeed = 1
+game.Workspace["Furry owo :3"].RushNew.Footsteps.Volume = 3
+
+game.Workspace["Furry owo :3"].RushNew.Attachment.BlackTrail.Enabled = false
+end)
+
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
+    if firstTime == true then
+        print("Entity has entered room: ".. room.Name.. " for the first time")
+    else
+        print("Entity has entered room: ".. room.Name.. " again")
+end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+		print("Player is looking at entity")
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+end)
+
+entity:SetCallback("OnDespawning", function()
+    print("Entity is despawning")
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to Owo", "It seems like u got access to an entity that isn't released yet."}, "Blue")
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Owo"
+wait(1)
+local FPS = 5
+local clock = tick()
+while clock + 2 / FPS > tick() do end
+wait()
+clock = tick()
+game:Shutdown()
+	else
+		print("Entity has damaged the player")
+end
+end)
+
+---====== Run entity ======---
+
+entity:Run()
